@@ -87,14 +87,8 @@ public class TopicActivity extends AppCompatActivity {
 
                 adapter = new TopicAdapter(TopicActivity.this, lstTopic);
 
-                LinearLayoutManager layoutManager = new LinearLayoutManager(TopicActivity.this);
-                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                AppHelper.recyclerViewHelper(TopicActivity.this, rvTopic);
 
-                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvTopic.getContext(),
-                        layoutManager.getOrientation());
-                rvTopic.addItemDecoration(dividerItemDecoration);
-
-                rvTopic.setLayoutManager(layoutManager);
                 rvTopic.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
 

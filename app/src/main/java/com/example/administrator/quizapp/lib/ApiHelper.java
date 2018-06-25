@@ -20,6 +20,7 @@ public class ApiHelper {
 
     public static String SERVER = "http://192.168.1.125:3000/";
     public static String TOPIC = "topics";
+    public static String CHALLENGES = "challenges";
 
     public static String POST_URL(URL url, JSONObject object) throws IOException {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();

@@ -15,6 +15,9 @@ import com.example.administrator.quizapp.R;
 import com.example.administrator.quizapp.lib.AppHelper;
 import com.example.administrator.quizapp.model.Topic;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +47,13 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.RecyclerView
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppHelper.choosenTopic = new Topic(topic);
+                AppHelper.choosenTopic = new JSONObject();
+                try {
+                    AppHelper.choosenTopic.put("_id", topic.getId());
+                    AppHelper.choosenTopic.put("name", topic.getName());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 Intent i = new Intent(mContext, LevelActivity.class);
                 mContext.startActivity(i);
                 //Log.d("ggg", AppHelper.choosenTopic.toString() + "s");

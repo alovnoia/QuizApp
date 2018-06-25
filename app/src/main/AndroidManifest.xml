@@ -26,7 +26,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".TopicActivity" />
-        <activity android:name=".LevelActivity"></activity>
+        <activity android:name=".LevelActivity" />
+        <activity android:name=".LoadingActivity" />
+        <activity android:name=".GameActivity"></activity>
     </application>
 
 </manifest>
