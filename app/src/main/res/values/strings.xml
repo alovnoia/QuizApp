@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+    <string name="challenge">challenge</string>
+    <string name="normal">normal</string>
+    <string name="up_challenge">Challenge</string>
+    <string name="up_normal">Normal</string>
+</resources>
