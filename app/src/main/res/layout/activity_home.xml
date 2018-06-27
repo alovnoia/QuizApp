@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="116dp"
         android:text="TextView"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,4 +38,14 @@
         android:text="@string/challenge"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnGame"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivLogout"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_lock_power_off" />
 </android.support.constraint.ConstraintLayout>

@@ -5,14 +5,8 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.administrator.quizapp.TopicActivity;
-import com.example.administrator.quizapp.model.Question;
-import com.example.administrator.quizapp.model.Topic;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 public class AppHelper {
 
@@ -25,6 +19,12 @@ public class AppHelper {
     public static JSONObject gameData;
     public static int maxQuestion = 5;
     public static JSONArray questionData;
+    public static String userEmail;
+    public static String userName;
+
+    public static void saveUser(String email) {
+        userEmail = email + "@gmail.com";
+    }
 
     public static boolean isChallenge() {
         return gameType.equals("challenge");

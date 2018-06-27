@@ -1,13 +1,25 @@
 package com.example.administrator.quizapp.model;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class Question {
 
     String id, level, content, image, code, base64Image;
     Topic topic;
     JSONObject player1, player2;
-    Answer[] answer = new Answer[4];
+    JSONArray answer;
+
+    public Question(String id, String level, String content, String image, String base64Image, JSONArray answer) {
+        this.id = id;
+        this.level = level;
+        this.content = content;
+        this.image = image;
+        this.base64Image = base64Image;
+        this.answer = answer;
+    }
 
     public Question(String id, String level, String content, String image, String base64Image) {
         this.id = id;
@@ -89,11 +101,11 @@ public class Question {
         this.player2 = player2;
     }
 
-    public Answer[] getAnswer() {
+    public JSONArray getAnswer() {
         return answer;
     }
 
-    public void setAnswer(Answer[] answer) {
+    public void setAnswer(JSONArray answer) {
         this.answer = answer;
     }
 }

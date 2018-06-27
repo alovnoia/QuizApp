@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.quizapp.lib.AppHelper;
@@ -13,6 +14,7 @@ public class HomeActivity extends AppCompatActivity {
 
     TextView tvName;
     Button btnGame, btnChallenge;
+    ImageView ivLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class HomeActivity extends AppCompatActivity {
         tvName = findViewById(R.id.tvName);
         btnChallenge = findViewById(R.id.btnChallenge);
         btnGame = findViewById(R.id.btnGame);
+        ivLogout = findViewById(R.id.ivLogout);
 
         btnChallenge.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +40,15 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(HomeActivity.this, TopicActivity.class);
                 AppHelper.gameType = getString(R.string.normal);
+                startActivity(i);
+            }
+        });
+
+        ivLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HomeActivity.this, MainActivity.class);
+                AppHelper.userEmail = null;
                 startActivity(i);
             }
         });
