@@ -12,6 +12,27 @@ public class Question {
     JSONObject player1, player2;
     JSONArray answer;
 
+    public Question(String id, String level, String content, String image, String base64Image, JSONObject player1, JSONArray answer) {
+        this.id = id;
+        this.level = level;
+        this.content = content;
+        this.image = image;
+        this.base64Image = base64Image;
+        this.player1 = player1;
+        this.answer = answer;
+    }
+
+    public Question(String id, String level, String content, String image, String base64Image, JSONObject player1, JSONObject player2, JSONArray answer) {
+        this.id = id;
+        this.level = level;
+        this.content = content;
+        this.image = image;
+        this.base64Image = base64Image;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.answer = answer;
+    }
+
     public Question(String id, String level, String content, String image, String base64Image, JSONArray answer) {
         this.id = id;
         this.level = level;

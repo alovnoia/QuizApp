@@ -96,7 +96,7 @@ public class GameActivity extends AppCompatActivity implements AnswerAdapter.OnI
                 ));
             }
 
-            answerAdapter = new AnswerAdapter(GameActivity.this, lstAnswer);
+            answerAdapter = new AnswerAdapter(GameActivity.this, lstAnswer, false, null);
             LinearLayoutManager layoutManager = new LinearLayoutManager(GameActivity.this);
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             rvAnswer.setLayoutManager(layoutManager);
@@ -164,11 +164,11 @@ public class GameActivity extends AppCompatActivity implements AnswerAdapter.OnI
             if (AppHelper.isChallenge()) {
                 result.put("player1", details);
                 AppHelper.gameData.put("idUser1", AppHelper.userEmail);
+                AppHelper.gameData.put("result", result);
             } else {
-                result.put("player2", details);
                 AppHelper.gameData.put("idUser2", AppHelper.userEmail);
+                AppHelper.gameData.getJSONObject("result").put("player2", details);
             }
-            AppHelper.gameData.put("result", result);
             Log.d("uuu", AppHelper.gameData.getJSONObject("result").toString() + "c");
         } catch (JSONException e) {
             e.printStackTrace();

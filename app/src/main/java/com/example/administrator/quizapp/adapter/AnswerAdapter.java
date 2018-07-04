@@ -27,8 +27,18 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.RecyclerVi
 
     private Context mContext;
     private List<Answer> data = new ArrayList<>();
+    private boolean isReview;
+    private String userChoose;
     private AnswerAdapter.RecyclerViewHolder rightAnswer;
     public boolean isClickable = true;
+
+    public AnswerAdapter(Context mContext, List<Answer> data, boolean isReview, String userChoose) {
+        this.mContext = mContext;
+        this.data = data;
+        this.isReview = isReview;
+        this.userChoose = userChoose;
+        isClickable = true;
+    }
 
     public AnswerAdapter(Context mContext, List<Answer> data) {
         this.mContext = mContext;
@@ -46,27 +56,43 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.RecyclerVi
     @Override
     public void onBindViewHolder(final AnswerAdapter.RecyclerViewHolder holder, final int position) {
         final Answer answer = data.get(position);
-        if (answer.isCorrect()) {
-            rightAnswer = holder;
+
+        if (answer.getContent().equalsIgnoreCase(userChoose)) {
+            if (answer.isCorrect()) {
+                holder.item.setBackgroundResource(R.drawable.btn_answer_right);
+            } else {
+                holder.item.setBackgroundResource(R.drawable.btn_answer_false);
+            }
         }
+
+        if (answer.isCorrect()) {
+            if (!isReview) {
+                rightAnswer = holder;
+            } else {
+                holder.item.setBackgroundResource(R.drawable.btn_answer_right);
+            }
+        }
+
         holder.tvAnswerContent.setText(answer.getContent());
 
-        holder.item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isClickable) {
-                    if (answer.isCorrect()) {
-                        holder.item.setBackgroundResource(R.drawable.btn_answer_right);
-                        onItemClickedListener.onItemClick(position, answer, true);
-                    } else {
-                        holder.item.setBackgroundResource(R.drawable.btn_answer_false);
-                        onItemClickedListener.onItemClick(position, answer, false);
+        if (!isReview) {
+            holder.item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (isClickable) {
+                        if (answer.isCorrect()) {
+                            holder.item.setBackgroundResource(R.drawable.btn_answer_right);
+                            onItemClickedListener.onItemClick(position, answer, true);
+                        } else {
+                            holder.item.setBackgroundResource(R.drawable.btn_answer_false);
+                            onItemClickedListener.onItemClick(position, answer, false);
+                        }
+                        rightAnswer.item.setBackgroundResource(R.drawable.btn_answer_right);
+                        isClickable = false;
                     }
-                    rightAnswer.item.setBackgroundResource(R.drawable.btn_answer_right);
-                    isClickable = false;
                 }
-            }
-        });
+            });
+        }
     }
 
     @Override

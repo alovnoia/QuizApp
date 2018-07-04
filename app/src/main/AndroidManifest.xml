@@ -23,7 +23,8 @@
         <activity android:name=".LevelActivity" />
         <activity android:name=".LoadingActivity" />
         <activity android:name=".GameActivity" />
-        <activity android:name=".StatActivity"></activity>
+        <activity android:name=".StatActivity" />
+        <activity android:name=".ReviewActivity"></activity>
     </application>
 
 </manifest>
