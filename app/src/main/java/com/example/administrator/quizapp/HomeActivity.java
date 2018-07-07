@@ -13,7 +13,7 @@ import com.example.administrator.quizapp.lib.AppHelper;
 public class HomeActivity extends AppCompatActivity {
 
     TextView tvName;
-    Button btnGame, btnChallenge;
+    Button btnGame, btnChallenge, btnHistory;
     ImageView ivLogout;
 
     @Override
@@ -24,7 +24,10 @@ public class HomeActivity extends AppCompatActivity {
         tvName = findViewById(R.id.tvName);
         btnChallenge = findViewById(R.id.btnChallenge);
         btnGame = findViewById(R.id.btnGame);
+        btnHistory = findViewById(R.id.btnHistory);
         ivLogout = findViewById(R.id.ivLogout);
+
+        tvName.setText(AppHelper.userName);
 
         btnChallenge.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +43,14 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(HomeActivity.this, TopicActivity.class);
                 AppHelper.gameType = getString(R.string.normal);
+                startActivity(i);
+            }
+        });
+
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HomeActivity.this, HistoryActivity.class);
                 startActivity(i);
             }
         });

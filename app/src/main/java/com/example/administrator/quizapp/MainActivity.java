@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String text = etEmail.getText().toString();
                 if (!text.equalsIgnoreCase("")) {
-                    startActivity(i);
-                    AppHelper.saveUser(text);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -64,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             try {
+                AppHelper.saveUser(etEmail.getText().toString());
                 URL url = new URL(strings[0]);
                 JSONObject obj = new JSONObject();
                 obj.put("email", AppHelper.userEmail);
@@ -82,10 +81,16 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Log.d("ttt", s);
+            Log.d("ttt", s + "c");
+            if (s.equalsIgnoreCase("")) {
+                Toast.makeText(MainActivity.this, "Cannot find user", Toast.LENGTH_SHORT).show();
+                etEmail.setText("");
+                return;
+            }
             try {
                 JSONObject obj = new JSONObject(s);
                 AppHelper.userName = obj.getString("name");
+                startActivity(i);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

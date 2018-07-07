@@ -23,6 +23,7 @@ public class ApiHelper {
     public static String CHALLENGES = "challenges";
     public static String GAMES = "games";
     public static String USERS = "users";
+    public static String QUESTIONS = "questions";
 
     public static String POST_URL(URL url, JSONObject object) throws IOException {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();

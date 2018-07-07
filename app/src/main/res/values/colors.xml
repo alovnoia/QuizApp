@@ -7,4 +7,7 @@
     <color name="colorGame">#696363</color>
     <color name="colorTrue">#6fef44</color>
     <color name="colorFalse">#fc0008</color>
+    <color name="colorWin">#6fef44</color>
+    <color name="colorLose">#fc0008</color>
+    <color name="colorDraw">#f2dd3c</color>
 </resources>
